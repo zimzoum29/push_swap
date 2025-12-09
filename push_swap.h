@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 10:24:27 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/09 16:19:22 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/09 20:21:39 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,22 @@ typedef struct s_stack
 	int	size;
 }		t_stack;
 
-void	ft_swap_a(t_stack a);
-void	ft_swap_b(t_stack b);
-void	ft_swap_s(t_stack a, t_stack b);
+void	ft_swap_a(t_stack *a);
+void	ft_swap_b(t_stack *b);
+void	ft_swap_s(t_stack *a, t_stack *b);
 
-void	ft_push_a(t_stack a, t_stack b);
-void	ft_push_b(t_stack a, t_stack b);
+void	ft_push_a(t_stack *a, t_stack *b);
+void	ft_push_b(t_stack *a, t_stack *b);
 
-void	ft_rotate_a(t_stack a);
-void	ft_rotate_b(t_stack b);
-void	ft_rotate_r(t_stack a, t_stack b);
+void	ft_rotate_a(t_stack *a);
+void	ft_rotate_b(t_stack *b);
+void	ft_rotate_r(t_stack *a, t_stack *b);
 
-void	ft_reverse_rotate_a(t_stack a);
-void	ft_reverse_rotate_b(t_stack b);
-void	ft_reverse_rotate_r(t_stack a, t_stack b);
+void	ft_reverse_rotate_a(t_stack *a);
+void	ft_reverse_rotate_b(t_stack *b);
+void	ft_reverse_rotate_r(t_stack *a, t_stack *b);
 
-void	ft_search_and_push(t_stack stack_a, t_stack stack_b);
+void	ft_sort(t_stack *a, t_stack *b);
 
 void	print_stack(t_stack stack);
 
