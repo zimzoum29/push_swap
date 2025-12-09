@@ -9,7 +9,7 @@
 
 typedef struct s_stack {
     int *data; // Contenu
-    int size; // Taille totale
+    int head; // indice du commencement de l'array
 	int nmemb; // Nombre d'elements
 } t_stack;
 

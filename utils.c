@@ -1,21 +1,16 @@
 #include "push_swap.h"
 
-void print_stack(t_stack stack)
-{
-	int i = 0;
-
-	printf("stack : |");
-	while (i < stack.nmemb)
+void print_stack(t_stack stack) 
+{ 
+	int i = stack.head;
+	int count = 0;
+	while (count < stack.nmemb)
 	{
-		printf("%d |", stack.data[i]);
-		i++;
+		printf("| %d", stack.data[i%stack.nmemb]); 
+		i++; 
+		count++; 
 	}
-	while (i < stack.size)
-	{
-		printf("  |");
-		i++;
-	}
-	printf("\n");
+	printf(" |\n");
 }
 
 void putstr(char *str)

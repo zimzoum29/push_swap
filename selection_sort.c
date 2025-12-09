@@ -51,7 +51,6 @@ void search_and_push(t_stack *stack_a, t_stack *stack_b)
 		}
 		k++;
 	}
-	printf("\n%d, %d\n", stack_a->nmemb, stack_a->size);
 	test
 	pa(stack_a, stack_b);
 }
@@ -68,9 +67,4 @@ void	selection_sort(t_stack *stack_a, t_stack *stack_b)
 	print_stack(*stack_a);
 	printf("stack b : ");
 	print_stack(*stack_b);
-}
-
-void ra2(t_stack *stack_a, t_stack *stack_b)
-{
-	ra(stack_a);
 }
