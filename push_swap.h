@@ -1,6 +1,8 @@
 #ifndef PUSH_SWAP_H
 #define PUSH_SWAP_H
 
+#define test printf("test\n");
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>

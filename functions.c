@@ -1,5 +1,5 @@
 #include "push_swap.h"
-#define test printf("test");
+
 
 void sa(t_stack *stack_a)
 {
@@ -33,7 +33,7 @@ void ss(t_stack *stack_a, t_stack *stack_b)
 
 void pa(t_stack *stack_a, t_stack *stack_b)
 {
-	if (stack_a->nmemb <= 1 || stack_b->size == stack_b->nmemb)
+	if (stack_a->nmemb < 1 || stack_b->size == stack_b->nmemb)
 		return ;
 	stack_b->data[stack_b->nmemb] = stack_a->data[stack_a->nmemb - 1];
 	stack_b->nmemb += 1;

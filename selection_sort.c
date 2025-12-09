@@ -18,6 +18,7 @@ static int find_index(const t_stack *stack_a)
 		}
 		i++;
 	}
+	printf("%d, %d",min, index);
 	return (index);
 }
 void search_and_push(t_stack *stack_a, t_stack *stack_b)
@@ -26,29 +27,32 @@ void search_and_push(t_stack *stack_a, t_stack *stack_b)
 	int n;
 	int min_index;
 	int j;
+	int k;
+	int n1;
 
-	while (i < n)
+	i = 0;
+	k = 0;
+	n1 = stack_a->nmemb + stack_b->nmemb;
+
+	while (k < n1)
 	{
-		i++;
-		min_index = find_index(stack_a);
-		j = 0;
-		if (min_index <= stack_a->nmemb / 2)
+		n = stack_a->nmemb;
+		while (i < n)
 		{
+			i++;
+			min_index = find_index(stack_a);
+			j = 0;
 			while (j < min_index + 1)
 			{
 				ra(stack_a);
 				j++;
 			}
+			pa(stack_a, stack_b);
 		}
-		else
-		{
-			while (j < stack_a->nmemb - min_index - 1)
-			{
-				rra(stack_a);
-				j++;
-			}
-		}
+		k++;
 	}
+	printf("\n%d, %d\n", stack_a->nmemb, stack_a->size);
+	test
 	pa(stack_a, stack_b);
 }
 
@@ -59,12 +63,11 @@ void	selection_sort(t_stack *stack_a, t_stack *stack_b)
 
 	i = 0;
 	n = stack_a->nmemb;
-	while (i <= n)
-	{
-		i++;
-		search_and_push(stack_a, stack_b);
-		print_stack(*stack_b);
-	}
+	search_and_push(stack_a, stack_b);
+	printf("stack a : ");
+	print_stack(*stack_a);
+	printf("stack b : ");
+	print_stack(*stack_b);
 }
 
 void ra2(t_stack *stack_a, t_stack *stack_b)
