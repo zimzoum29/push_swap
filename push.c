@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/09 12:56:02 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/09 16:21:17 by tigondra         ###   ########.fr       */
+/*   Created: 2025/12/09 11:45:06 by tigondra          #+#    #+#             */
+/*   Updated: 2025/12/09 13:38:27 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int ac, char **av)
+static void    ft_push(t_stack a, t_stack b)
 {
-        t_stack a;
-        t_stack b;
-        if (ac == 2)
-                a = ft_fill_tab_str(av[1]);
-        else if (ac > 2)
-                a = ft_fill_tab_int(&av[1], ac - 1);
-        b.data = malloc(sizeof(int) * a.size);
-        b.size = 0;
-        print_stack(a);
-        ft_search_and_push(a,b);
-        print_stack(a);
-	return (ac);
+        if (a.size == 0)
+                exit(0);
+        b.data[b.size] = a.data[a.size - 1];
+        ++b.size;
+        --a.size;
+}
+
+void    ft_push_a(t_stack a, t_stack b)
+{
+        ft_push(a, b);
+        printf("pa\n");
+}
+
+void    ft_push_b(t_stack b, t_stack a)
+{
+        ft_push(b, a);
+        printf("pb\n");
 }
