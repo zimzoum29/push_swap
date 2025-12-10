@@ -6,36 +6,35 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 10:24:27 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/10 11:24:21 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/10 14:28:28 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include "ft_printf.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
-
-
 typedef struct s_node
 {
-	int		data;
-	struct 	s_node *previous;
-	struct 	s_node *next;
-} t_node;
+	int				data;
+	struct s_node	*previous;
+	struct s_node	*next;
+}					t_node;
 
 typedef struct s_stack
 {
-	int 	size;
+	int				size;
 	struct s_node	*head;
 	struct s_node	*last;
-} t_stack;
+}					t_stack;
 
-t_stack	*init_stack(int size, t_node *head, t_node *last);
-t_node	*init_node(int data, t_node *previous, t_node *next);
-void	free_node(t_node *node);
+t_stack				*init_stack(int size, t_node *head, t_node *last);
+t_node				*init_node(int data, t_node *previous, t_node *next);
+void				free_node(t_node *node);
 
 void				ft_swap_a(t_stack *a);
 void				ft_swap_b(t_stack *b);
@@ -58,6 +57,6 @@ void				print_stack(t_stack *stack);
 
 int					ft_atoi(const char *str);
 t_stack				*ft_fill_tab_str(char *str);
-//t_stack				ft_fill_tab_int(char **tab);
+t_stack				*ft_fill_tab_av(char **tab);
 
 #endif

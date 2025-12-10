@@ -6,15 +6,15 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:34:20 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/10 10:45:11 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/10 14:29:03 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void putstr(char *str)
+static void	putstr(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -24,12 +24,15 @@ static void putstr(char *str)
 	}
 }
 
-void print_stack(t_stack *stack)
+void	print_stack(t_stack *stack)
 {
-	t_node *node;
-	int i;
-	
-	i = 0;
+	t_node	*node;
+
+	if (!stack || !stack->head)
+	{
+		ft_printf("stack : | |\n");
+		return ;
+	}
 	node = stack->head;
 	printf("stack : |");
 	while (node->next != NULL)
