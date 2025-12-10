@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 12:56:20 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/10 11:24:55 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/10 12:23:15 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,3 +38,5 @@ t_stack	*ft_fill_tab_str(char *str)
 	}
 	return (stack);
 }
+
+
