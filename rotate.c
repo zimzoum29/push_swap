@@ -6,35 +6,26 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 11:49:04 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/09 20:19:21 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/10 11:20:25 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void    ft_rotate(t_stack *a)
+static void    ft_rotate(t_stack *s)
 {
-        int     i;
-	int     tmp;
-        
-	if (a->size <= 1)
-		exit(0);
-        i = 0;
-        tmp = a->data[0];
-	while (i < a->size - 1)
-	{
-		a->data[i] = a->data[i + 1];
-		i++;
-	}
-	a->data[a->size - 1] = tmp;
-}
+    t_node *node;
 
-// void    ft_rotate(int *head, int size)
-// {
-//         if (*head == size)
-//                 *head = 0;
-//         *head += 1;
-// }
+    if (!s || !s->head || !s->head->next)
+        return;
+    node = s->head;
+    s->head = node->next;
+    s->head->previous = NULL;
+    node->previous = s->last;
+    node->next = NULL;
+    s->last->next = node;
+    s->last = node;
+}
 
 void    ft_rotate_a(t_stack *a)
 {

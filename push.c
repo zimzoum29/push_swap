@@ -6,20 +6,43 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 11:45:06 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/09 20:23:40 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/10 11:28:20 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void    ft_push(t_stack *a, t_stack *b)
+void ft_push(t_stack *a, t_stack *b)
 {
-        if (a->size == 0)
-                exit(0);
-        b->data[b->size] = a->data[a->size - 1];
-        b->size++;
-        a->size--;
+    t_node *node;
+
+    if (!a || a->size == 0)
+        return;
+    node = a->last;
+    a->last = node->previous;
+    if (a->last)
+        a->last->next = NULL;
+    else
+        a->head = NULL;
+    a->size--;
+    if (b->size == 0)
+    {
+        b->head = node;
+        b->last = node;
+        node->previous = NULL;
+        node->next = NULL;
+    }
+    else
+    {
+        node->previous = b->last;
+        node->next = NULL;
+        b->last->next = node;
+        b->last = node;
+    }
+    b->size++;
 }
+
+
 
 void    ft_push_a(t_stack *a, t_stack *b)
 {

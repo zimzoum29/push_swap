@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 10:24:27 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/09 20:21:39 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/10 11:24:21 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,33 +17,47 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+
+
+typedef struct s_node
+{
+	int		data;
+	struct 	s_node *previous;
+	struct 	s_node *next;
+} t_node;
+
 typedef struct s_stack
 {
-	int	*data;
-	int	size;
-}		t_stack;
+	int 	size;
+	struct s_node	*head;
+	struct s_node	*last;
+} t_stack;
 
-void	ft_swap_a(t_stack *a);
-void	ft_swap_b(t_stack *b);
-void	ft_swap_s(t_stack *a, t_stack *b);
+t_stack	*init_stack(int size, t_node *head, t_node *last);
+t_node	*init_node(int data, t_node *previous, t_node *next);
+void	free_node(t_node *node);
 
-void	ft_push_a(t_stack *a, t_stack *b);
-void	ft_push_b(t_stack *a, t_stack *b);
+void				ft_swap_a(t_stack *a);
+void				ft_swap_b(t_stack *b);
+void				ft_swap_s(t_stack *a, t_stack *b);
 
-void	ft_rotate_a(t_stack *a);
-void	ft_rotate_b(t_stack *b);
-void	ft_rotate_r(t_stack *a, t_stack *b);
+void				ft_push_a(t_stack *a, t_stack *b);
+void				ft_push_b(t_stack *a, t_stack *b);
 
-void	ft_reverse_rotate_a(t_stack *a);
-void	ft_reverse_rotate_b(t_stack *b);
-void	ft_reverse_rotate_r(t_stack *a, t_stack *b);
+void				ft_rotate_a(t_stack *a);
+void				ft_rotate_b(t_stack *b);
+void				ft_rotate_r(t_stack *a, t_stack *b);
 
-void	ft_sort(t_stack *a, t_stack *b);
+void				ft_reverse_rotate_a(t_stack *a);
+void				ft_reverse_rotate_b(t_stack *b);
+void				ft_reverse_rotate_r(t_stack *a, t_stack *b);
 
-void	print_stack(t_stack stack);
+void				ft_sort(t_stack *a, t_stack *b);
 
-int		ft_atoi(const char *str);
-t_stack	ft_fill_tab_str(char *str);
-t_stack	ft_fill_tab_int(char **tab, int size);
+void				print_stack(t_stack *stack);
+
+int					ft_atoi(const char *str);
+t_stack				*ft_fill_tab_str(char *str);
+//t_stack				ft_fill_tab_int(char **tab);
 
 #endif

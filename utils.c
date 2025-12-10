@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:34:20 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/09 15:54:24 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/10 10:45:11 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,20 @@ static void putstr(char *str)
 	}
 }
 
-void print_stack(t_stack stack)
+void print_stack(t_stack *stack)
 {
-	int i = 0;
-
+	t_node *node;
+	int i;
+	
+	i = 0;
+	node = stack->head;
 	printf("stack : |");
-	while (i < stack.size)
+	while (node->next != NULL)
 	{
-		printf("%d|", stack.data[i]);
-		i++;
+		printf("%d|", node->data);
+		node = node->next;
 	}
-	while (i < stack.size)
-	{
-		printf("|");
-		i++;
-	}
+	printf("%d|", node->data);
 	printf("\n");
 }
 
