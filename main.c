@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/09 12:56:02 by tigondra          #+#    #+#             */
+/*   Updated: 2025/12/10 11:22:28 by tigondra         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
 int main(int ac, char **av)
 {
+<<<<<<< HEAD
 	if (ac == 1)
 	{
 		int array_a[100] = {-5, 4, 3, 2, 16, 6, 9, 8, 7, 0};
@@ -46,7 +58,20 @@ int main(int ac, char **av)
 		print_stack(*stack_a);
 		print_stack(*stack_b);
 	}
+=======
+        t_stack *a;
+        t_stack *b;
+>>>>>>> main
 	
-	return (0);
+	a = ft_fill_tab_str(av[1]);
+        b = ft_fill_tab_str(av[2]);
+        print_stack(a);
+        ft_swap_a(a);
+        print_stack(a);
+        ft_push_b(b, a);
+        print_stack(a);
+        print_stack(b);
+        ft_reverse_rotate_a(a);
+        print_stack(a);
+	return (ac);
 }
-
