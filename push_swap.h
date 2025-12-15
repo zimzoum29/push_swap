@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 10:24:27 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/10 14:28:28 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/15 14:46:43 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "ft_printf.h"
-# include <stdio.h>
+# include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -51,12 +51,13 @@ void				ft_reverse_rotate_a(t_stack *a);
 void				ft_reverse_rotate_b(t_stack *b);
 void				ft_reverse_rotate_r(t_stack *a, t_stack *b);
 
-void				ft_sort(t_stack *a, t_stack *b);
+void				ft_selection_sort(t_stack *stack_a, t_stack *stack_b);
 
 void				print_stack(t_stack *stack);
 
-int					ft_atoi(const char *str);
-t_stack				*ft_fill_tab_str(char *str);
-t_stack				*ft_fill_tab_av(char **tab);
+int					ft_atoi_safe(char *str, int *error);
+t_stack				*ft_fill_stack(int ac, char **av);
+
+void				free_stack(t_stack *stack);
 
 #endif

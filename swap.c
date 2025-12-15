@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 11:41:41 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/10 14:29:37 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/15 13:10:33 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ static void	ft_swap(t_stack *a)
 {
 	int	tmp;
 
-	if (a->head->next == NULL)
+	if (a->last->previous == NULL)
 		return ;
-	tmp = a->last->data;
-	a->last->data = a->last->previous->data;
-	a->last->previous->data = tmp;
+	tmp = a->head->data;
+	a->head->data = a->head->next->data;
+	a->head->next->data = tmp;
 }
 
 void	ft_swap_a(t_stack *a)

@@ -6,95 +6,100 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 12:56:20 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/10 14:29:43 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/15 14:47:11 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	check_str(char *str)
+static int	stack_add_back(t_stack *stack, int value)
 {
-	int	i;
+	t_node	*node;
 
-	i = 0;
-	if (str[i] == '\0')
+	node = init_node(value, stack->last, NULL);
+	if (!node)
 		return (0);
-	while (str[i] == 32)
-	{
-		if (!str[i + 1])
-			return (0);
-		i++;
-	}
-	i = 0;
-	while (str[i])
-	{
-		if (!(str[i] > 47 && str[i] < 58) && str[i] != 32)
-			return (0);
-		i++;
-	}
+	if (!stack->head)
+		stack->head = node;
+	else
+		stack->last->next = node;
+	stack->last = node;
+	stack->size++;
 	return (1);
 }
 
-static int	check_av(char **av)
+static int	ft_is_valid_number(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (av[i])
-	{
-		if (!check_str(av[i]))
-			return (0);
+	if (str[i] == '+' || str[i] == '-')
 		i++;
+	if (!(str[i] >= '0' && str[i] <= '9'))
+		return (0);
+	while (str[i] >= '0' && str[i] <= '9')
+		i++;
+	return (1);
+}
+
+static int	has_duplicate(t_stack *stack, int value)
+{
+	t_node	*node;
+
+	node = stack->head;
+	while (node)
+	{
+		if (node->data == value)
+			return (1);
+		node = node->next;
+	}
+	return (0);
+}
+
+static int	parse_string(t_stack *stack, char *str)
+{
+	int	i;
+	int	value;
+	int	error;
+
+	i = 0;
+	while (str[i])
+	{
+		while (str[i] == 32)
+			i++;
+		if (!str[i])
+			break ;
+		if (!ft_is_valid_number(&str[i]))
+			return (0);
+		value = ft_atoi_safe(&str[i], &error);
+		if (error)
+			return (0);
+		if (has_duplicate(stack, value) || !stack_add_back(stack, value))
+			return (0);
+		if (str[i] == '+' || str[i] == '-')
+			i++;
+		while (str[i] >= '0' && str[i] <= '9')
+			i++;
 	}
 	return (1);
 }
 
-t_stack	*ft_fill_tab_str(char *str)
+t_stack	*ft_fill_stack(int ac, char **av)
 {
-	int		i;
 	t_stack	*stack;
-	t_node	*node;
-
-	if (!str || check_str(str) == 0)
-		return (NULL);
-	i = 0;
-	node = init_node(ft_atoi(&str[0]), NULL, NULL);
-	stack = init_stack(1, node, node);
-	while (str[i] == 32)
-		i++;
-	while ((str[i] > 47 && str[i] < 58))
-		i++;
-	while (str[i])
-	{
-		if ((str[i] > 47 && str[i] < 58) && str[i - 1] == 32)
-		{
-			node->next = init_node(ft_atoi(&str[i]), node, NULL);
-			node = node->next;
-			stack->last = node;
-			stack->size++;
-		}
-		i++;
-	}
-	return (stack);
-}
-
-t_stack	*ft_fill_tab_av(char **av)
-{
 	int		i;
-	t_stack	*stack;
-	t_node	*node;
 
-	if (check_av(av) == 0)
+	stack = init_stack(0, NULL, NULL);
+	if (!stack)
 		return (NULL);
-	node = init_node(ft_atoi(av[0]), NULL, NULL);
-	stack = init_stack(1, node, node);
 	i = 1;
-	while (av[i])
+	while (i < ac)
 	{
-		node->next = init_node(ft_atoi(av[i]), node, NULL);
-		node = node->next;
-		stack->last = node;
-		stack->size++;
+		if (!parse_string(stack, av[i]))
+		{
+			free_stack(stack);
+			return (NULL);
+		}
 		i++;
 	}
 	return (stack);

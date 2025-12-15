@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:34:20 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/10 14:29:03 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/15 14:46:33 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,37 +34,40 @@ void	print_stack(t_stack *stack)
 		return ;
 	}
 	node = stack->head;
-	printf("stack : |");
+	ft_printf("stack : |");
 	while (node->next != NULL)
 	{
-		printf("%d|", node->data);
+		ft_printf("%d|", node->data);
 		node = node->next;
 	}
-	printf("%d|", node->data);
-	printf("\n");
+	ft_printf("%d|", node->data);
+	ft_printf("\n");
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi_safe(char *str, int *error)
 {
-	int	i;
-	int	sign;
-	int	sum;
+	long	res;
+	int		sign;
+	int		i;
 
-	i = 0;
+	res = 0;
 	sign = 1;
-	sum = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
+	i = 0;
+	*error = 0;
 	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
-			sign = -sign;
+			sign = -1;
 		i++;
 	}
-	while (str[i] >= 48 && str[i] <= 57)
+	if (!(str[i] >= '0' && str[i] <= '9'))
+		return (*error = 1, 0);
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		sum = (sum * 10) + (str[i] - 48);
+		res = res * 10 + (str[i] - '0');
+		if ((sign == 1 && res > INT_MAX) || (sign == -1 && - res < INT_MIN))
+			return (*error = 1, 0);
 		i++;
 	}
-	return (sum * sign);
+	return ((int)(res * sign));
 }
