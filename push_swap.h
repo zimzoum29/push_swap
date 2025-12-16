@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 10:24:27 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/15 14:46:43 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/16 14:38:05 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct s_node
 {
 	int				data;
+	int				index;
 	struct s_node	*previous;
 	struct s_node	*next;
 }					t_node;
@@ -53,7 +54,11 @@ void				ft_reverse_rotate_r(t_stack *a, t_stack *b);
 
 void				ft_selection_sort(t_stack *stack_a, t_stack *stack_b);
 
+void				ft_radix_sort(t_stack *stack_a, t_stack *stack_b);
+
 void				print_stack(t_stack *stack);
+
+void				init_index(t_stack *stack);
 
 int					ft_atoi_safe(char *str, int *error);
 t_stack				*ft_fill_stack(int ac, char **av);

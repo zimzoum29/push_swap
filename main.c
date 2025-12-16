@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 12:56:02 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/15 13:49:14 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/16 14:21:22 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ int	main(int ac, char **av)
 		return (ft_error_free(a));
 	print_stack(a);
 	print_stack(b);
-	ft_selection_sort(a, b);
+	init_index(a);
+	ft_radix_sort(a, b);
 	print_stack(a);
 	print_stack(b);
 	free_stack(a);
