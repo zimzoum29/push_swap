@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_index.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdauga <pdauga@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 12:33:14 by pdauga            #+#    #+#             */
-/*   Updated: 2025/12/15 14:32:56 by pdauga           ###   ########.fr       */
+/*   Updated: 2025/12/16 15:26:50 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void init_index(t_stack *stack)
+void	init_index(t_stack *stack)
 {
-	t_node *node;
-	t_node *node2;
-	int count;
-	
+	int		count;
+	t_node	*node;
+	t_node	*node2;
+
 	node = stack->head;
 	while (node)
 	{
@@ -29,6 +29,6 @@ void init_index(t_stack *stack)
 				node->index++;
 			node2 = node2->next;
 		}
-		node = node->next; 
+		node = node->next;
 	}
 }
