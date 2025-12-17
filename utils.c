@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:34:20 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/15 14:46:33 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/17 17:33:54 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	print_stack(t_stack *stack)
 	ft_printf("\n");
 }
 
-int	ft_atoi_safe(char *str, int *error)
+int	ft_atoi(char *str, int *error)
 {
 	long	res;
 	int		sign;

@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 10:24:27 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/16 14:38:05 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/17 18:23:52 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,25 @@ typedef struct s_stack
 	struct s_node	*head;
 	struct s_node	*last;
 }					t_stack;
+
+typedef struct s_bench
+{
+	int				ops;
+	int				disorder;
+	int				strat;
+	int				comp;
+	int				sa;
+	int				sb;
+	int				ss;
+	int				pa;
+	int				pb;
+	int				ra;
+	int				rb;
+	int				rr;
+	int				rra;
+	int				rrb;
+	int				rrr;
+}					t_bench;
 
 t_stack				*init_stack(int size, t_node *head, t_node *last);
 t_node				*init_node(int data, t_node *previous, t_node *next);
@@ -60,9 +79,11 @@ void				print_stack(t_stack *stack);
 
 void				init_index(t_stack *stack);
 
-int					ft_atoi_safe(char *str, int *error);
+int					ft_atoi(char *str, int *error);
 t_stack				*ft_fill_stack(int ac, char **av);
 
 void				free_stack(t_stack *stack);
+
+void				init_bench(t_bench *bench);
 
 #endif

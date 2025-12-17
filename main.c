@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 12:56:02 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/16 14:21:22 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/17 18:23:32 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	main(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
+	t_bench	*bench;
 
 	if (ac < 2)
 		return (0);
@@ -55,9 +56,9 @@ int	main(int ac, char **av)
 	b = init_stack(0, NULL, NULL);
 	if (!b)
 		return (ft_error_free(a));
+	init_bench(bench);
 	print_stack(a);
 	print_stack(b);
-	init_index(a);
 	ft_radix_sort(a, b);
 	print_stack(a);
 	print_stack(b);

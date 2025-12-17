@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 12:56:20 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/15 14:47:11 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/17 17:34:38 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static int	parse_string(t_stack *stack, char *str)
 			break ;
 		if (!ft_is_valid_number(&str[i]))
 			return (0);
-		value = ft_atoi_safe(&str[i], &error);
+		value = ft_atoi(&str[i], &error);
 		if (error)
 			return (0);
 		if (has_duplicate(stack, value) || !stack_add_back(stack, value))
