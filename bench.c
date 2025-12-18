@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 17:55:58 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/18 11:54:27 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/18 15:12:47 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,10 @@ char	*ft_get_comp(int comp)
 
 void	create_benchmark(t_bench *bench)
 {
-	ft_printf("[bench] disorder: %d%%\n", bench->disorder);
+	int	d;
+
+	d = bench->disorder;
+	ft_printf("[bench] disorder: %d.%d%%\n", d / 100, d % 100);
 	ft_printf("[bench] strategy: %s", ft_get_strat(bench->strat));
 	ft_printf(" / %s\n", ft_get_comp(bench->comp));
 	ft_printf("[bench] total_ops: %d\n", bench->ops);

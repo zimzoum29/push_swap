@@ -6,79 +6,104 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 12:56:02 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/18 14:38:28 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/18 15:10:49 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int is_flag(const char *s)
+static int	is_flag(const char *s)
 {
-    return (s && s[0] == '-' && s[1] == '-');
+	return (s && s[0] == '-' && s[1] == '-');
 }
 
-static int parse_flags(int ac, char **av, int *i, t_bench *bench)
+static int	parse_flags(int ac, char **av, int *i, t_bench *bench)
 {
-    init_bench(bench);
-    *i = 1;
-    while (*i < ac && is_flag(av[*i]))
-    {
-        if (!ft_strcmp(av[*i], "--bench"))
-            bench->enable = 1;
-        else if (!ft_strcmp(av[*i], "--simple"))
-            bench->strat = 1;
-        else if (!ft_strcmp(av[*i], "--medium"))
-            bench->strat = 2;
-        else if (!ft_strcmp(av[*i], "--complex"))
-            bench->strat = 3;
-        else if (!ft_strcmp(av[*i], "--adaptive"))
-            bench->strat = 4;
-        else
-            return (0);
-        (*i)++;
-    }
-    return (1);
+	init_bench(bench);
+	*i = 1;
+	while (*i < ac && is_flag(av[*i]))
+	{
+		if (!ft_strcmp(av[*i], "--bench"))
+			bench->enable = 1;
+		else if (!ft_strcmp(av[*i], "--simple"))
+			bench->strat = 1;
+		else if (!ft_strcmp(av[*i], "--medium"))
+			bench->strat = 2;
+		else if (!ft_strcmp(av[*i], "--complex"))
+			bench->strat = 3;
+		else if (!ft_strcmp(av[*i], "--adaptive"))
+			bench->strat = 4;
+		else
+			return (0);
+		(*i)++;
+	}
+	return (1);
 }
 
 void	ft_sort(t_stack *a, t_stack *b, t_bench *bench)
 {
 	if (bench->strat == 1)
-        ft_selection_sort(a, b, &bench);
-    else if (bench->strat == 2)
-        ft_radix_sort(a, b, &bench);
-    else if (bench->strat == 3)
-        ft_radix_sort(a, b, &bench);
-    else
-        ft_selection_sort(a, b, &bench);
+		ft_selection_sort(a, b, bench);
+	else if (bench->strat == 2)
+		ft_radix_sort(a, b, bench);
+	else if (bench->strat == 3)
+		ft_radix_sort(a, b, bench);
+	else
+		ft_selection_sort(a, b, bench);
 }
 
-int main(int ac, char **av)
+int	compute_disorder(const t_stack *a)
 {
-    t_stack     *a;
-    t_stack     *b;
-    t_bench		bench;
-    int         first_arg;
+	const t_node	*i;
+	const t_node	*j;
+	long long		mistakes;
+	long long		total_pairs;
 
-    if (ac < 2)
-        return (0);
-    if (!parse_flags(ac, av, &first_arg, &bench))
-        return (write(2, "Error\n", 6), 1);
-    if (first_arg >= ac)
+	if (!a || a->size < 2 || !a->head)
 		return (0);
-    a = ft_fill_stack(ac - first_arg, av + first_arg);
-    if (!a)
-        return (write(2, "Error\n", 6), 1);
-    b = init_stack(0, NULL, NULL);
-    if (!b)
-        return (free_stack(a), write(2, "Error\n", 6), 1);
+	mistakes = 0;
+	total_pairs = 0;
+	i = a->head;
+	while (i)
+	{
+		j = i->next;
+		while (j)
+		{
+			total_pairs++;
+			if (i->data > j->data)
+				mistakes++;
+			j = j->next;
+		}
+		i = i->next;
+	}
+	return ((int)((mistakes * 10000 + total_pairs / 2) / total_pairs));
+}
+
+int	main(int ac, char **av)
+{
+	t_stack	*a;
+	t_stack	*b;
+	t_bench	bench;
+	int		first_arg;
+
+	if (ac < 2)
+		return (0);
+	if (!parse_flags(ac, av, &first_arg, &bench))
+		return (write(2, "Error\n", 6), 1);
+	if (first_arg >= ac)
+		return (0);
+	a = ft_fill_stack(ac - first_arg, av + first_arg);
+	if (!a)
+		return (write(2, "Error\n", 6), 1);
+	b = init_stack(0, NULL, NULL);
+	if (!b)
+		return (free_stack(a), write(2, "Error\n", 6), 1);
 	bench.disorder = compute_disorder(a);
 	if (bench.disorder != 1)
 	{
 		ft_sort(a, b, &bench);
-    	if (bench.enable == 1)
-    		create_benchmark(&bench);
+		if (bench.enable == 1)
+			create_benchmark(&bench);
 	}
-	free_stack(a);
-    free_stack(b);
-    return (0);
+	return (free_stacks(a, b));
 }

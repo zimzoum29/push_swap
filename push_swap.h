@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 10:24:27 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/18 14:09:28 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/18 14:54:51 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int		ft_strcmp(char *s1, char *s2);
 t_stack	*ft_fill_stack(int ac, char **av);
 
 void	free_stack(t_stack *stack);
+int		free_stacks(t_stack *a, t_stack *b);
 
 void	init_bench(t_bench *bench);
 void	create_benchmark(t_bench *bench);

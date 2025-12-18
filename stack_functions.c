@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 09:46:09 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/18 13:22:37 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/18 14:55:25 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,13 @@ void	free_stack(t_stack *stack)
 		node = next;
 	}
 	free(stack);
+}
+
+int	free_stacks(t_stack *a, t_stack *b)
+{
+	if (a)
+		free_stack(a);
+	if (b)
+		free_stack(b);
+	return (0);
 }

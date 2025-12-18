@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 13:07:33 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/18 13:14:00 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/18 14:49:41 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int	get_max_bits(t_stack *stack)
 	return (max_bits);
 }
 
-void	ft_search_and_push(t_stack *stack_a, t_stack *stack_b, int bit_pos, t_bench *bench)
+void	ft_search_and_push(t_stack *stack_a, t_stack *stack_b, int bit_pos,
+		t_bench *bench)
 {
 	if (get_bit(stack_a->head->index, bit_pos) == 0)
 	{
