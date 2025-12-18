@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_tab.c                                         :+:      :+:    :+:   */
+/*   fill_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 12:56:20 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/17 17:34:38 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/18 14:28:30 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ t_stack	*ft_fill_stack(int ac, char **av)
 	stack = init_stack(0, NULL, NULL);
 	if (!stack)
 		return (NULL);
-	i = 1;
+	i = 0;
 	while (i < ac)
 	{
 		if (!parse_string(stack, av[i]))

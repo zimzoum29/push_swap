@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 13:07:33 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/17 16:57:01 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/18 13:14:00 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,23 +39,25 @@ int	get_max_bits(t_stack *stack)
 	return (max_bits);
 }
 
-void	ft_search_and_push(t_stack *stack_a, t_stack *stack_b, int bit_pos)
+void	ft_search_and_push(t_stack *stack_a, t_stack *stack_b, int bit_pos, t_bench *bench)
 {
 	if (get_bit(stack_a->head->index, bit_pos) == 0)
 	{
-		ft_push_b(stack_a, stack_b);
+		ft_push_b(stack_a, stack_b, bench);
 	}
 	else
-		ft_rotate_a(stack_a);
+		ft_rotate_a(stack_a, bench);
 }
 
-void	ft_radix_sort(t_stack *stack_a, t_stack *stack_b)
+void	ft_radix_sort(t_stack *stack_a, t_stack *stack_b, t_bench *bench)
 {
 	t_node	*node;
 	int		i;
 	int		bit_pos;
 	int		max_bits;
 
+	bench->strat = 3;
+	bench->comp = 3;
 	init_index(stack_a);
 	i = 0;
 	bit_pos = 0;
@@ -63,15 +65,15 @@ void	ft_radix_sort(t_stack *stack_a, t_stack *stack_b)
 	while (bit_pos < max_bits)
 	{
 		while (stack_a->size > 0 && get_bit(stack_a->head->index, bit_pos) == 0)
-			ft_push_b(stack_a, stack_b);
+			ft_push_b(stack_a, stack_b, bench);
 		node = stack_a->head;
-		ft_rotate_a(stack_a);
+		ft_rotate_a(stack_a, bench);
 		while (stack_a->size > 0 && node->index != stack_a->head->index)
 		{
-			ft_search_and_push(stack_a, stack_b, bit_pos);
+			ft_search_and_push(stack_a, stack_b, bit_pos, bench);
 		}
 		while (stack_b->size > 0)
-			ft_push_a(stack_a, stack_b);
+			ft_push_a(stack_a, stack_b, bench);
 		bit_pos++;
 	}
 }

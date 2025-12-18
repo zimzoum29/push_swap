@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 11:43:54 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/15 14:36:28 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/18 13:14:35 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	ft_find_min_n(const t_stack *stack_a)
 	return (n);
 }
 
-static void	ft_replace_and_push(int n, t_stack *a, t_stack *b)
+static void	ft_replace_and_push(int n, t_stack *a, t_stack *b, t_bench *bench)
 {
 	int	i;
 
@@ -45,7 +45,7 @@ static void	ft_replace_and_push(int n, t_stack *a, t_stack *b)
 	{
 		while (i < n)
 		{
-			ft_rotate_a(a);
+			ft_rotate_a(a, bench);
 			i++;
 		}
 	}
@@ -53,33 +53,35 @@ static void	ft_replace_and_push(int n, t_stack *a, t_stack *b)
 	{
 		while (i < a->size - n)
 		{
-			ft_reverse_rotate_a(a);
+			ft_reverse_rotate_a(a, bench);
 			i++;
 		}
 	}
-	ft_push_b(a, b);
+	ft_push_b(a, b, bench);
 }
 
-void	ft_selection_sort(t_stack *stack_a, t_stack *stack_b)
+void	ft_selection_sort(t_stack *stack_a, t_stack *stack_b, t_bench *bench)
 {
 	t_node	*node;
 	int		i;
 	int		size;
 	int		n_min;
 
+	bench->strat = 1;
+	bench->comp = 1;
 	size = stack_a->size;
 	node = stack_a->head;
 	i = 0;
 	while (i < size)
 	{
 		n_min = ft_find_min_n(stack_a);
-		ft_replace_and_push(n_min, stack_a, stack_b);
+		ft_replace_and_push(n_min, stack_a, stack_b, bench);
 		i++;
 	}
 	i = 0;
 	while (i < size)
 	{
-		ft_push_a(stack_a, stack_b);
+		ft_push_a(stack_a, stack_b, bench);
 		i++;
 	}
 }

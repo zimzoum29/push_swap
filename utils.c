@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:34:20 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/17 17:33:54 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/18 14:08:44 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,18 @@ int	ft_atoi(char *str, int *error)
 		i++;
 	}
 	return ((int)(res * sign));
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i] || s2[i])
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (0);
 }

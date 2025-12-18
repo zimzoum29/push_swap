@@ -6,63 +6,79 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 12:56:02 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/17 18:23:32 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/18 14:38:28 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_stack(t_stack *stack)
+static int is_flag(const char *s)
 {
-	t_node	*node;
-	t_node	*next;
-
-	if (!stack)
-		return ;
-	node = stack->head;
-	while (node)
-	{
-		next = node->next;
-		free(node);
-		node = next;
-	}
-	free(stack);
+    return (s && s[0] == '-' && s[1] == '-');
 }
 
-int	ft_error_free(t_stack *a)
+static int parse_flags(int ac, char **av, int *i, t_bench *bench)
 {
-	free_stack(a);
-	write(2, "Error\n", 6);
-	return (0);
+    init_bench(bench);
+    *i = 1;
+    while (*i < ac && is_flag(av[*i]))
+    {
+        if (!ft_strcmp(av[*i], "--bench"))
+            bench->enable = 1;
+        else if (!ft_strcmp(av[*i], "--simple"))
+            bench->strat = 1;
+        else if (!ft_strcmp(av[*i], "--medium"))
+            bench->strat = 2;
+        else if (!ft_strcmp(av[*i], "--complex"))
+            bench->strat = 3;
+        else if (!ft_strcmp(av[*i], "--adaptive"))
+            bench->strat = 4;
+        else
+            return (0);
+        (*i)++;
+    }
+    return (1);
 }
 
-int	ft_error(void)
+void	ft_sort(t_stack *a, t_stack *b, t_bench *bench)
 {
-	write(2, "Error\n", 6);
-	return (0);
+	if (bench->strat == 1)
+        ft_selection_sort(a, b, &bench);
+    else if (bench->strat == 2)
+        ft_radix_sort(a, b, &bench);
+    else if (bench->strat == 3)
+        ft_radix_sort(a, b, &bench);
+    else
+        ft_selection_sort(a, b, &bench);
 }
 
-int	main(int ac, char **av)
+int main(int ac, char **av)
 {
-	t_stack	*a;
-	t_stack	*b;
-	t_bench	*bench;
+    t_stack     *a;
+    t_stack     *b;
+    t_bench		bench;
+    int         first_arg;
 
-	if (ac < 2)
+    if (ac < 2)
+        return (0);
+    if (!parse_flags(ac, av, &first_arg, &bench))
+        return (write(2, "Error\n", 6), 1);
+    if (first_arg >= ac)
 		return (0);
-	a = ft_fill_stack(ac, av);
-	if (!a)
-		return (ft_error());
-	b = init_stack(0, NULL, NULL);
-	if (!b)
-		return (ft_error_free(a));
-	init_bench(bench);
-	print_stack(a);
-	print_stack(b);
-	ft_radix_sort(a, b);
-	print_stack(a);
-	print_stack(b);
+    a = ft_fill_stack(ac - first_arg, av + first_arg);
+    if (!a)
+        return (write(2, "Error\n", 6), 1);
+    b = init_stack(0, NULL, NULL);
+    if (!b)
+        return (free_stack(a), write(2, "Error\n", 6), 1);
+	bench.disorder = compute_disorder(a);
+	if (bench.disorder != 1)
+	{
+		ft_sort(a, b, &bench);
+    	if (bench.enable == 1)
+    		create_benchmark(&bench);
+	}
 	free_stack(a);
-	free_stack(b);
-	return (0);
+    free_stack(b);
+    return (0);
 }
