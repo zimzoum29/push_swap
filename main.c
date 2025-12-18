@@ -6,22 +6,22 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 12:56:02 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/18 15:10:49 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/18 15:52:25 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	is_flag(const char *s)
+static int	ft_is_flag(const char *s)
 {
 	return (s && s[0] == '-' && s[1] == '-');
 }
 
-static int	parse_flags(int ac, char **av, int *i, t_bench *bench)
+static int	ft_parse_flags(int ac, char **av, int *i, t_bench *bench)
 {
-	init_bench(bench);
+	ft_init_bench(bench);
 	*i = 1;
-	while (*i < ac && is_flag(av[*i]))
+	while (*i < ac && ft_is_flag(av[*i]))
 	{
 		if (!ft_strcmp(av[*i], "--bench"))
 			bench->enable = 1;
@@ -49,10 +49,10 @@ void	ft_sort(t_stack *a, t_stack *b, t_bench *bench)
 	else if (bench->strat == 3)
 		ft_radix_sort(a, b, bench);
 	else
-		ft_selection_sort(a, b, bench);
+		ft_adaptive_sort(a, b, bench);
 }
 
-int	compute_disorder(const t_stack *a)
+int	ft_compute_disorder(const t_stack *a)
 {
 	const t_node	*i;
 	const t_node	*j;
@@ -88,22 +88,22 @@ int	main(int ac, char **av)
 
 	if (ac < 2)
 		return (0);
-	if (!parse_flags(ac, av, &first_arg, &bench))
+	if (!ft_parse_flags(ac, av, &first_arg, &bench))
 		return (write(2, "Error\n", 6), 1);
 	if (first_arg >= ac)
 		return (0);
 	a = ft_fill_stack(ac - first_arg, av + first_arg);
 	if (!a)
 		return (write(2, "Error\n", 6), 1);
-	b = init_stack(0, NULL, NULL);
+	b = ft_init_stack(0, NULL, NULL);
 	if (!b)
-		return (free_stack(a), write(2, "Error\n", 6), 1);
-	bench.disorder = compute_disorder(a);
-	if (bench.disorder != 1)
+		return (ft_free_stack(a), write(2, "Error\n", 6), 1);
+	bench.disorder = ft_compute_disorder(a);
+	if (bench.disorder != 0)
 	{
 		ft_sort(a, b, &bench);
 		if (bench.enable == 1)
-			create_benchmark(&bench);
+			ft_create_benchmark(&bench);
 	}
-	return (free_stacks(a, b));
+	return (ft_free_stacks(a, b));
 }

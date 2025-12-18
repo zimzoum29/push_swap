@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 10:24:27 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/18 14:54:51 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/18 15:47:52 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,15 @@ typedef struct s_bench
 	int	rrr;
 }	t_bench;
 
-t_stack	*init_stack(int size, t_node *head, t_node *last);
-t_node	*init_node(int data, t_node *previous, t_node *next);
-void	free_node(t_node *node);
+t_stack	*ft_init_stack(int size, t_node *head, t_node *last);
+t_node	*ft_init_node(int data, t_node *previous, t_node *next);
+void	ft_free_node(t_node *node);
+void	ft_free_stack(t_stack *stack);
+int		ft_free_stacks(t_stack *a, t_stack *b);
+
+void	ft_init_index(t_stack *stack);
+
+t_stack	*ft_fill_stack(int ac, char **av);
 
 void	ft_swap_a(t_stack *a, t_bench *bench);
 void	ft_swap_b(t_stack *b, t_bench *bench);
@@ -73,22 +79,13 @@ void	ft_reverse_rotate_b(t_stack *b, t_bench *bench);
 void	ft_reverse_rotate_r(t_stack *a, t_stack *b, t_bench *bench);
 
 void	ft_selection_sort(t_stack *stack_a, t_stack *stack_b, t_bench *bench);
-
 void	ft_radix_sort(t_stack *stack_a, t_stack *stack_b, t_bench *bench);
-
-void	print_stack(t_stack *stack);
-
-void	init_index(t_stack *stack);
+void	ft_adaptive_sort(t_stack *a, t_stack *b, t_bench *bench);
 
 int		ft_atoi(char *str, int *error);
 int		ft_strcmp(char *s1, char *s2);
 
-t_stack	*ft_fill_stack(int ac, char **av);
-
-void	free_stack(t_stack *stack);
-int		free_stacks(t_stack *a, t_stack *b);
-
-void	init_bench(t_bench *bench);
-void	create_benchmark(t_bench *bench);
+void	ft_init_bench(t_bench *bench);
+void	ft_create_benchmark(t_bench *bench);
 
 #endif

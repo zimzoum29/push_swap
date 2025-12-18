@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 11:43:54 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/18 13:14:35 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/18 15:38:24 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ void	ft_selection_sort(t_stack *stack_a, t_stack *stack_b, t_bench *bench)
 	int		size;
 	int		n_min;
 
-	bench->strat = 1;
 	bench->comp = 1;
+	bench->strat = 1;
 	size = stack_a->size;
 	node = stack_a->head;
 	i = 0;

@@ -1,46 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_index.c                                    :+:      :+:    :+:   */
+/*   adaptive_sort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/15 12:33:14 by pdauga            #+#    #+#             */
-/*   Updated: 2025/12/17 16:58:27 by tigondra         ###   ########.fr       */
+/*   Created: 2025/12/18 15:25:09 by tigondra          #+#    #+#             */
+/*   Updated: 2025/12/18 15:37:45 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	set_index_zero(t_stack *stack)
+void	ft_adaptive_sort(t_stack *a, t_stack *b, t_bench *bench)
 {
-	t_node	*node;
-
-	node = stack->head;
-	while (node)
-	{
-		if (node)
-			node->index = 0;
-		node = node->next;
-	}
-}
-
-void	init_index(t_stack *stack)
-{
-	t_node	*node;
-	t_node	*node2;
-
-	set_index_zero(stack);
-	node = stack->head;
-	while (node)
-	{
-		node2 = stack->head;
-		while (node2)
-		{
-			if (node2->data < node->data)
-				node->index++;
-			node2 = node2->next;
-		}
-		node = node->next;
-	}
+	if (bench->disorder < 2000)
+		ft_selection_sort(a, b, bench);
+	else if (bench->disorder < 5000)
+		ft_radix_sort(a, b, bench);
+	else
+		ft_radix_sort(a, b, bench);
+	bench->strat = 4;
 }

@@ -6,17 +6,17 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 12:56:20 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/18 14:28:30 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/18 15:49:20 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	stack_add_back(t_stack *stack, int value)
+static int	ft_stack_add_back(t_stack *stack, int value)
 {
 	t_node	*node;
 
-	node = init_node(value, stack->last, NULL);
+	node = ft_init_node(value, stack->last, NULL);
 	if (!node)
 		return (0);
 	if (!stack->head)
@@ -42,7 +42,7 @@ static int	ft_is_valid_number(char *str)
 	return (1);
 }
 
-static int	has_duplicate(t_stack *stack, int value)
+static int	ft_has_duplicate(t_stack *stack, int value)
 {
 	t_node	*node;
 
@@ -56,7 +56,7 @@ static int	has_duplicate(t_stack *stack, int value)
 	return (0);
 }
 
-static int	parse_string(t_stack *stack, char *str)
+static int	ft_parse_string(t_stack *stack, char *str)
 {
 	int	i;
 	int	value;
@@ -74,7 +74,7 @@ static int	parse_string(t_stack *stack, char *str)
 		value = ft_atoi(&str[i], &error);
 		if (error)
 			return (0);
-		if (has_duplicate(stack, value) || !stack_add_back(stack, value))
+		if (ft_has_duplicate(stack, value) || !ft_stack_add_back(stack, value))
 			return (0);
 		if (str[i] == '+' || str[i] == '-')
 			i++;
@@ -89,15 +89,15 @@ t_stack	*ft_fill_stack(int ac, char **av)
 	t_stack	*stack;
 	int		i;
 
-	stack = init_stack(0, NULL, NULL);
+	stack = ft_init_stack(0, NULL, NULL);
 	if (!stack)
 		return (NULL);
 	i = 0;
 	while (i < ac)
 	{
-		if (!parse_string(stack, av[i]))
+		if (!ft_parse_string(stack, av[i]))
 		{
-			free_stack(stack);
+			ft_free_stack(stack);
 			return (NULL);
 		}
 		i++;

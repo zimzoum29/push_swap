@@ -6,13 +6,13 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 17:55:58 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/18 15:12:47 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/18 15:49:38 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	init_bench(t_bench *bench)
+void	ft_init_bench(t_bench *bench)
 {
 	bench->ops = 0;
 	bench->disorder = 0;
@@ -63,7 +63,7 @@ char	*ft_get_comp(int comp)
 	return (str);
 }
 
-void	create_benchmark(t_bench *bench)
+void	ft_create_benchmark(t_bench *bench)
 {
 	int	d;
 

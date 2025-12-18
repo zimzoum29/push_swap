@@ -6,43 +6,11 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:34:20 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/18 14:08:44 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/18 15:46:04 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	putstr(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-}
-
-void	print_stack(t_stack *stack)
-{
-	t_node	*node;
-
-	if (!stack || !stack->head)
-	{
-		ft_printf("stack : | |\n");
-		return ;
-	}
-	node = stack->head;
-	ft_printf("stack : |");
-	while (node->next != NULL)
-	{
-		ft_printf("%d|", node->data);
-		node = node->next;
-	}
-	ft_printf("%d|", node->data);
-	ft_printf("\n");
-}
 
 int	ft_atoi(char *str, int *error)
 {

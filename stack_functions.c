@@ -6,13 +6,13 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 09:46:09 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/18 14:55:25 by tigondra         ###   ########.fr       */
+/*   Updated: 2025/12/18 15:45:36 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*init_stack(int size, t_node *head, t_node *last)
+t_stack	*ft_init_stack(int size, t_node *head, t_node *last)
 {
 	t_stack	*stack;
 
@@ -25,7 +25,7 @@ t_stack	*init_stack(int size, t_node *head, t_node *last)
 	return (stack);
 }
 
-t_node	*init_node(int data, t_node *previous, t_node *next)
+t_node	*ft_init_node(int data, t_node *previous, t_node *next)
 {
 	t_node	*node;
 
@@ -38,14 +38,14 @@ t_node	*init_node(int data, t_node *previous, t_node *next)
 	return (node);
 }
 
-void	free_node(t_node *node)
+void	ft_free_node(t_node *node)
 {
 	if (!node)
 		return ;
 	free(node);
 }
 
-void	free_stack(t_stack *stack)
+void	ft_free_stack(t_stack *stack)
 {
 	t_node	*node;
 	t_node	*next;
@@ -62,11 +62,11 @@ void	free_stack(t_stack *stack)
 	free(stack);
 }
 
-int	free_stacks(t_stack *a, t_stack *b)
+int	ft_free_stacks(t_stack *a, t_stack *b)
 {
 	if (a)
-		free_stack(a);
+		ft_free_stack(a);
 	if (b)
-		free_stack(b);
+		ft_free_stack(b);
 	return (0);
 }
