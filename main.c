@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 12:56:02 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/18 15:52:25 by tigondra         ###   ########.fr       */
+/*   Updated: 2026/01/05 13:17:58 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,15 +89,15 @@ int	main(int ac, char **av)
 	if (ac < 2)
 		return (0);
 	if (!ft_parse_flags(ac, av, &first_arg, &bench))
-		return (write(2, "Error\n", 6), 1);
+		return (ft_error());
 	if (first_arg >= ac)
 		return (0);
 	a = ft_fill_stack(ac - first_arg, av + first_arg);
 	if (!a)
-		return (write(2, "Error\n", 6), 1);
+		return (ft_error());
 	b = ft_init_stack(0, NULL, NULL);
 	if (!b)
-		return (ft_free_stack(a), write(2, "Error\n", 6), 1);
+		return (ft_free_stack_error(a));
 	bench.disorder = ft_compute_disorder(a);
 	if (bench.disorder != 0)
 	{
