@@ -66,9 +66,12 @@ char	*ft_get_comp(int comp)
 void	ft_create_benchmark(t_bench *bench)
 {
 	int	d;
+	int	f;
 
-	d = bench->disorder;
-	ft_printf("[bench] disorder: %d.%d%%\n", d / 100, d % 100);
+	d = bench->disorder / 100;
+	f = bench->disorder % 100;
+	ft_printf("[bench] disorder: %d.", d);
+	ft_printf("%d%%\n", f);
 	ft_printf("[bench] strategy: %s", ft_get_strat(bench->strat));
 	ft_printf(" / %s\n", ft_get_comp(bench->comp));
 	ft_printf("[bench] total_ops: %d\n", bench->ops);

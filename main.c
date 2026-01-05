@@ -76,7 +76,7 @@ int	ft_compute_disorder(const t_stack *a)
 		}
 		i = i->next;
 	}
-	return ((int)((mistakes * 10000 + total_pairs / 2) / total_pairs));
+	return ((int)((mistakes * 10000) / total_pairs));
 }
 
 int	main(int ac, char **av)
