@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 10:24:27 by tigondra          #+#    #+#             */
-/*   Updated: 2026/01/05 13:14:49 by tigondra         ###   ########.fr       */
+/*   Updated: 2026/01/05 15:34:52 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,11 @@ void				ft_selection_sort(t_stack *stack_a, t_stack *stack_b,
 void				ft_radix_sort(t_stack *stack_a, t_stack *stack_b,
 						t_bench *bench);
 void				ft_adaptive_sort(t_stack *a, t_stack *b, t_bench *bench);
+int    				ft_bucket_sort(t_stack *stack_a, t_stack *stack_b, t_bench *bench);
 
 int					ft_atoi(char *str, int *error);
 int					ft_strcmp(char *s1, char *s2);
+int     			ft_sqrt(unsigned int n);
 
 int					ft_error(void);
 int					ft_free_stack_error(t_stack *stack);

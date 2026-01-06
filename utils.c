@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:34:20 by tigondra          #+#    #+#             */
-/*   Updated: 2026/01/05 13:15:52 by tigondra         ###   ########.fr       */
+/*   Updated: 2026/01/05 15:34:22 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,16 @@ int	ft_strcmp(char *s1, char *s2)
 		i++;
 	}
 	return (0);
+}
+
+int     ft_sqrt(unsigned int n)
+{
+    unsigned int i = 1;
+
+    while (i * i < n)
+        i++;
+    if (i * i == n)
+        return (i);
+    else
+        return (--i);
 }

@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 12:56:02 by tigondra          #+#    #+#             */
-/*   Updated: 2026/01/05 13:17:58 by tigondra         ###   ########.fr       */
+/*   Updated: 2026/01/05 15:36:22 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_sort(t_stack *a, t_stack *b, t_bench *bench)
 	if (bench->strat == 1)
 		ft_selection_sort(a, b, bench);
 	else if (bench->strat == 2)
-		ft_radix_sort(a, b, bench);
+		ft_bucket_sort(a, b, bench);
 	else if (bench->strat == 3)
 		ft_radix_sort(a, b, bench);
 	else

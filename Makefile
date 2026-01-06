@@ -14,6 +14,7 @@ SRCS        := \
 	rotate.c \
 	reverse_rotate.c \
 	selection_sort.c \
+	bucket_sort.c \
 	radix_sort.c \
 	adaptive_sort.c \
 	init_index.c \
