@@ -6,13 +6,13 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 11:52:47 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/18 11:49:57 by tigondra         ###   ########.fr       */
+/*   Updated: 2026/01/06 14:14:24 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ft_reverse_rotate(t_stack *s)
+void	ft_reverse_rotate(t_stack *s)
 {
 	t_node	*node;
 

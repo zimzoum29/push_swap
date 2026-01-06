@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 11:43:54 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/18 15:38:24 by tigondra         ###   ########.fr       */
+/*   Updated: 2026/01/06 12:57:23 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ static int	ft_find_min_n(const t_stack *stack_a)
 	return (n);
 }
 
-static void	ft_replace_and_push(int n, t_stack *a, t_stack *b, t_bench *bench)
+static void	ft_replace_and_push(unsigned int n, t_stack *a, t_stack *b, t_bench *bench)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
 	if (n <= a->size / 2)

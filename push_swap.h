@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 10:24:27 by tigondra          #+#    #+#             */
-/*   Updated: 2026/01/05 15:34:52 by tigondra         ###   ########.fr       */
+/*   Updated: 2026/01/06 14:14:49 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "ft_printf.h"
+# include "get_next_line.h"
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -21,14 +22,14 @@
 typedef struct s_node
 {
 	int				data;
-	int				index;
+	unsigned int	index;
 	struct s_node	*previous;
 	struct s_node	*next;
 }					t_node;
 
 typedef struct s_stack
 {
-	int				size;
+	unsigned int	size;
 	struct s_node	*head;
 	struct s_node	*last;
 }					t_stack;
@@ -63,17 +64,21 @@ void				ft_init_index(t_stack *stack);
 
 t_stack				*ft_fill_stack(int ac, char **av);
 
+void				ft_swap(t_stack *a);
 void				ft_swap_a(t_stack *a, t_bench *bench);
 void				ft_swap_b(t_stack *b, t_bench *bench);
 void				ft_swap_s(t_stack *a, t_stack *b, t_bench *bench);
 
+void				ft_push(t_stack *a, t_stack *b);
 void				ft_push_a(t_stack *a, t_stack *b, t_bench *bench);
 void				ft_push_b(t_stack *a, t_stack *b, t_bench *bench);
 
+void				ft_rotate(t_stack *s);
 void				ft_rotate_a(t_stack *a, t_bench *bench);
 void				ft_rotate_b(t_stack *b, t_bench *bench);
 void				ft_rotate_r(t_stack *a, t_stack *b, t_bench *bench);
 
+void				ft_reverse_rotate(t_stack *s);
 void				ft_reverse_rotate_a(t_stack *a, t_bench *bench);
 void				ft_reverse_rotate_b(t_stack *b, t_bench *bench);
 void				ft_reverse_rotate_r(t_stack *a, t_stack *b, t_bench *bench);

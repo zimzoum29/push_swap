@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 13:07:33 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/18 15:52:43 by tigondra         ###   ########.fr       */
+/*   Updated: 2026/01/06 13:01:45 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_get(int value, int bit_pos)
 int	ft_get_max_bits(t_stack *stack)
 {
 	t_node	*current;
-	int		max_index;
+	unsigned int		max_index;
 	int		max_bits;
 
 	if (stack->size == 0)

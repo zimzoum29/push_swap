@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 13:09:19 by tigondra          #+#    #+#             */
-/*   Updated: 2026/01/06 13:24:05 by tigondra         ###   ########.fr       */
+/*   Created: 2025/11/20 14:58:36 by tigondra          #+#    #+#             */
+/*   Updated: 2026/01/06 13:23:37 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-# include <stdarg.h>
+# include <stdlib.h>
 # include <unistd.h>
 
-int	ft_strlen_int(char *str);
-int	ft_putchar(char c);
-int	ft_putstr(char *str);
-int	ft_putnbr(int nb);
-int	ft_putunsigned_nbr(unsigned int nb);
-int	ft_putnbr_base(unsigned long nbr, char *base, int len);
-int	ft_check_case(char c, va_list args);
-int	ft_printf(const char *str, ...) __attribute__((format(printf, 1, 2)));
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+char	*get_next_line(int fd);
+
+size_t	ft_strlen_sizet(const char *s);
+char	*ft_strchr(const char *s, int c);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char *s1, char *s2);
 
 #endif

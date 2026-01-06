@@ -6,13 +6,13 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 12:57:04 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/10 14:21:20 by tigondra         ###   ########.fr       */
+/*   Updated: 2026/01/06 13:23:29 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_strlen(char *str)
+int	ft_strlen_int(char *str)
 {
 	int	i;
 

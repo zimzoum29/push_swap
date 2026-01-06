@@ -6,13 +6,13 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 11:41:41 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/18 11:50:54 by tigondra         ###   ########.fr       */
+/*   Updated: 2026/01/06 13:38:58 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ft_swap(t_stack *a)
+void	ft_swap(t_stack *a)
 {
 	int	tmp;
 

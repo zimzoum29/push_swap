@@ -6,7 +6,7 @@
 /*   By: tigondra <tigondra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 12:08:16 by tigondra          #+#    #+#             */
-/*   Updated: 2025/12/10 15:13:10 by tigondra         ###   ########.fr       */
+/*   Updated: 2026/01/06 13:24:28 by tigondra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_putnbr_base(unsigned long nb, char *base, int len)
 {
 	unsigned long	len_base;
 
-	len_base = ft_strlen(base);
+	len_base = ft_strlen_int(base);
 	if (len == -1)
 	{
 		if (nb == 0)
